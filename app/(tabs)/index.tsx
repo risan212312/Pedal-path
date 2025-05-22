@@ -16,6 +16,10 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
+      <Image
+        source={require('@/assets/very_funny_ahhCatt.jpg')}
+        style={styles.catImage}
+      />
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
@@ -71,5 +75,12 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  catImage: {
+    width: 250,
+    height: 200,
+    alignSelf: 'center',
+    borderRadius: 16,
+    marginVertical: 16,
   },
 });
