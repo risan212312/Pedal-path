@@ -1,7 +1,7 @@
 import { FIREBASE_AUTH } from '@/firebasecofig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { ActivityIndicator, Button, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 const login = () =>
@@ -43,6 +43,7 @@ const login = () =>
 
     return (
         <View style ={styles.container}>
+            <KeyboardAvoidingView behavior='padding' style={styles.container}>
             <TextInput value={email} style = {styles.input} placeholder="Email" autoCapitalize="none" onChangeText = {(text)=> setEmail(text)}/> 
             <TextInput secureTextEntry={true} value={password} style = {styles.input} placeholder="password" autoCapitalize="none" onChangeText = {(text)=> setPassword(text)}/> 
 
@@ -57,7 +58,7 @@ const login = () =>
             
             </>
             )}
-
+            </KeyboardAvoidingView>
         </View>
     );
 };
