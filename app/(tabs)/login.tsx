@@ -1,5 +1,5 @@
-import { FIREBASE_AUTH } from '@/firebasecofig';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'expo-router';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
@@ -10,7 +10,8 @@ const login = () =>
     const [password, setPassword] = useState('');
     const [loading , setLoading] = useState(false);
 
-    const auth = FIREBASE_AUTH;
+    const auth = getAuth();
+    const router = useRouter();
 
     const signIn = async () => {
         setLoading(true);
@@ -18,6 +19,7 @@ const login = () =>
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
             alert ('Login Successfull');
+            router.replace('/HomeScreen'); // Navigate to HomeScreen after login
         }   catch (error: any){
             console.log(error);
             alert('Invalid email or password');

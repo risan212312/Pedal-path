@@ -1,5 +1,6 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import { Tabs, useRouter, useSegments } from 'expo-router';
+import { onAuthStateChanged } from 'firebase/auth';
+import React, { useEffect } from 'react';
 import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
@@ -7,9 +8,24 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { FIREBASE_AUTH } from '../../firebaseconfig';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const router = useRouter();
+  const segments = useSegments();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      if (!user && segments[1] !== 'login') {
+        router.replace('/(tabs)/login');
+      }
+      if (user && segments[1] === 'login') {
+        router.replace('/(tabs)/HomeScreen');
+      }
+    });
+    return unsubscribe;
+  }, [router, segments]);
 
   return (
     <Tabs
@@ -26,13 +42,16 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
-      <Tabs.Screen
-        name="HomeScreen"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
+      {/* Hide HomeScreen tab if not logged in */}
+      {FIREBASE_AUTH.currentUser && (
+        <Tabs.Screen
+          name="HomeScreen"
+          options={{
+            title: 'Home',
+            tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          }}
+        />
+      )}
       <Tabs.Screen
         name="community"
         options={{
@@ -40,6 +59,15 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.2.fill" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="login"
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.crop.circle.badge.checkmark" color={color} />,
+          tabBarButton: () => null, // Hide login tab button
+        }}
+      />
+      {/* ...other tabs... */}
     </Tabs>
   );
 }
