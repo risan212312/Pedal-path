@@ -17,6 +17,7 @@ const login = () =>
         try {   
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log(response);
+            alert ('Login Successfull');
         }   catch (error: any){
             console.log(error);
             alert('Invalid email or password');
@@ -25,6 +26,7 @@ const login = () =>
         }
             
     }
+    
 
     const signUp = async () => {
         setLoading(true);
@@ -51,12 +53,14 @@ const login = () =>
             
             <ActivityIndicator size={"large"}  color={"#0000ff"}/>
             ): (
-            <>
+            <View style={styles.buttonContainer}>
+
             <Button title="Sign Up" onPress={signUp}/>
+
             <Button title="Login" onPress={signIn}/>
             
             
-            </>
+            </View>
             )}
             </KeyboardAvoidingView>
         </View>
@@ -69,14 +73,25 @@ const styles = StyleSheet.create({
     container: {
       marginHorizontal: 20,
       flex: 1,
+      marginBottom: 20,
       justifyContent: 'center',
+      alignItems: 'center',
     },
     input: {
       marginVertical: 4,
+      marginBottom: 20,
       height: 50,
       borderWidth: 1,
       borderRadius: 4,
       padding: 10,
       backgroundColor: '#fff',
     },
+    buttonContainer: {
+        width: '100%',
+        justifyContent: 'space-around',
+        padding: 10,
+        height: 120, // Adjust height as needed
+        alignItems: 'center',
+    },
+
   });
