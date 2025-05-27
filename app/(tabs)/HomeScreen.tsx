@@ -1,29 +1,30 @@
 // File: /Pedal-path/app/(tabs)/HomeScreen.tsx
 
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-
 const HomeScreen = () => {
+    const navigation = useNavigation() as any;
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome to the Home Page!</Text>
             <View style={styles.buttonContainer}>
                 <Button
                     title="Home"
-                    onPress={() => navigator.navigate('Home')}
+                    onPress={() => navigation.navigate('Home')}
                 />
                 <Button
                     title="Map"
-                    onPress={() => navigator.navigate('Map')}
+                    onPress={() => navigation.navigate('Map')}
                 />
                 <Button
                     title="Communication"
-                    onPress={() => navigator.navigate('Communication')}
+                    onPress={() => navigation.navigate('Communication')}
                 />
                 <Button
                     title="Settings"
-                    onPress={() => navigator.navigate('Settings')}
+                    onPress={() => navigation.navigate('Settings')}
                 />
             </View>
         </View>
