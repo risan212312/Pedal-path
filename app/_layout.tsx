@@ -22,7 +22,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <Redirect href="/(tabs)/community" />
+      <Redirect href="/(tabs)/login" />
       <StatusBar style="auto" />
     </ThemeProvider>
   );
