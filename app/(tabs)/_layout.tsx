@@ -25,6 +25,14 @@ export default function TabLayout() {
           },
           default: {},
         }),
+      }}>
+      <Tabs.Screen
+        name="HomeScreen"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
       }}
       initialRouteName="community">
       <Tabs.Screen
