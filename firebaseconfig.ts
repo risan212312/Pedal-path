@@ -4,13 +4,12 @@ import { initializeAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAq0NXsHcfSlWFA21BhVnOa8noGdC8NE34",
-  authDomain: "pedalpath-login.firebaseapp.com",
-  projectId: "pedalpath-login",
-  storageBucket: "pedalpath-login.appspot.com",
-  messagingSenderId: "314443850103",
-  appId: "1:314443850103:web:6b6fdd7e2f128a07764172",
-  measurementId: "G-0H0GJ0LB3H"
+  apiKey: 'AIzaSyDqjLZ1zTW9uzdjfa33Lnc04ssdrp2oF4g',
+  authDomain: 'pedalpath-4bc87.firebaseapp.com',
+  projectId: 'pedalpath-4bc87',
+  storageBucket: 'pedalpath-4bc87.firebasestorage.app',
+  messagingSenderId: '41310765956',
+  appId: '1:41310765956:web:8148d2e601',
 };
 
 // Initialize Firebase app only once
