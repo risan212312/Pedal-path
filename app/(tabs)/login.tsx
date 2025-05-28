@@ -1,16 +1,17 @@
 import { useRouter } from 'expo-router';
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { ActivityIndicator, Button, KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { FIREBASE_AUTH } from '../../firebaseconfig';
 
-const login = () =>
+const Login = () =>
 {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading , setLoading] = useState(false);
 
-    const auth = getAuth();
+    const auth = FIREBASE_AUTH;
     const router = useRouter();
 
     const signIn = async () => {
@@ -69,7 +70,7 @@ const login = () =>
     );
 };
 
-export default login;
+export default Login;
 
 const styles = StyleSheet.create({
     container: {

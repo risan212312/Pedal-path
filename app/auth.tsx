@@ -1,4 +1,10 @@
-// Temporary placeholder to satisfy Expo Router's requirement for a default export
+import React from 'react';
+import { Text, View } from 'react-native';
+
 export default function AuthScreen() {
-  return null;
+  return (
+    <View>
+      <Text>Auth Screen</Text>
+    </View>
+  );
 }

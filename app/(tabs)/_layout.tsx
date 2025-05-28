@@ -42,16 +42,13 @@ export default function TabLayout() {
           default: {},
         }),
       }}>
-      {/* Hide HomeScreen tab if not logged in */}
-      {FIREBASE_AUTH.currentUser && (
-        <Tabs.Screen
-          name="HomeScreen"
-          options={{
-            title: 'Home',
-            tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-          }}
-        />
-      )}
+      <Tabs.Screen
+        name="HomeScreen"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
       <Tabs.Screen
         name="community"
         options={{
@@ -60,11 +57,10 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="login"
+        name="index"
         options={{
-          title: 'Login',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.crop.circle.badge.checkmark" color={color} />,
-          tabBarButton: () => null, // Hide login tab button
+          title: 'Index',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="rectangle.grid.2x2.fill" color={color} />,
         }}
       />
       {/* ...other tabs... */}
