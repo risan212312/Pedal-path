@@ -1,10 +1,10 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { HelloWave } from '@components/HelloWave';
+import ParallaxScrollView from '@components/ParallaxScrollView';
+import { ThemedText } from '@components/ThemedText';
+import { ThemedView } from '@components/ThemedView';
 
 export default function HomeScreen() {
   return (
@@ -12,12 +12,12 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
+          source={require('../../assets/images/partial-react-logo.png')}
           style={styles.reactLogo}
         />
       }>
       <Image
-        source={require('@/assets/very_funny_ahhCatt.jpg')}
+        source={require('../../assets/very_funny_ahhCatt.jpg')}
         style={styles.catImage}
       />
       <ThemedView style={styles.titleContainer}>
