@@ -16,11 +16,14 @@ export function ThemedText({
   ...rest
 }: ThemedTextProps) {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-
+  let fontFamily = 'Roboto_400Regular';
+  if (type === 'title' || type === 'defaultSemiBold' || type === 'subtitle' || type === 'link') {
+    fontFamily = 'Roboto_700Bold';
+  }
   return (
     <Text
       style={[
-        { color },
+        { color, fontFamily },
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,

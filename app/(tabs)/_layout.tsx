@@ -1,7 +1,7 @@
 import { Tabs, useRouter, useSegments } from 'expo-router';
 import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Image, Platform } from 'react-native';
 
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -57,10 +57,29 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="index"
+        name="maps"
         options={{
-          title: 'Index',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="rectangle.grid.2x2.fill" color={color} />,
+          title: 'Maps',
+          tabBarIcon: ({ color }) => (
+            <Image
+              source={require('../../cyclists image/map_icon.png')}
+              style={{ width: 28, height: 28, tintColor: color }}
+              resizeMode="contain"
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="login"
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ color }) => (
+            <Image
+              source={require('../../cyclists image/login.png')}
+              style={{ width: 28, height: 28, tintColor: color }}
+              resizeMode="contain"
+            />
+          ),
         }}
       />
       {/* ...other tabs... */}
