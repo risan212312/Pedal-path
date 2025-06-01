@@ -1,31 +1,27 @@
-// File: /Pedal-path/app/(tabs)/HomeScreen.tsx
-
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 const HomeScreen = () => {
-    const navigation = useNavigation() as any;
+    // State variables for trip information
+    const [tripsDone, setTripsDone] = useState(5); // Example value
+    const [totalDistance, setTotalDistance] = useState(120); // Example value in kilometers
+    const [userInfo, setUser ] = useState({
+        name: 'Risan Shrestha',
+        email: 'risan005@gmail.com',
+    });
+
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Welcome to the Home Page!</Text>
-            <View style={styles.buttonContainer}>
-                <Button
-                    title="Home"
-                    onPress={() => navigation.navigate('Home')}
-                />
-                <Button
-                    title="Map"
-                    onPress={() => navigation.navigate('Map')}
-                />
-                <Button
-                    title="Communication"
-                    onPress={() => navigation.navigate('Communication')}
-                />
-                <Button
-                    title="Settings"
-                    onPress={() => navigation.navigate('Settings')}
-                />
+            <Text style={styles.title}>Welcome to Pedal Path</Text>
+            <Image 
+                source={require('@/assets/images/pic.jpeg')} // Update with your image path
+                style={styles.image} 
+            />
+            <View style={styles.infoContainer}>
+                <Text style={styles.infoText}>Trips Done: {tripsDone}</Text>
+                <Text style={styles.infoText}>Total Distance: {totalDistance} km</Text>
+                <Text style={styles.infoText}>:User  {userInfo.name}</Text>
+                <Text style={styles.infoText}>Email: {userInfo.email}</Text>
             </View>
         </View>
     );
@@ -33,19 +29,30 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        marginHorizontal: 20,
         flex: 1,
+        marginBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        backgroundColor: '#ADD8E6', // Light blue background
     },
     title: {
         fontSize: 24,
-        marginBottom: 20,
+        marginBottom: 30,
     },
-    buttonContainer: {
+    infoContainer: {
         width: '100%',
-        justifyContent: 'space-around',
-        height: 200, // Adjust height as needed
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    image: {
+        width: 200, // Set the width of the image
+        height: 200, // Set the height of the image
+        marginBottom: 20, // Add some space below the image
+    },
+    infoText: {
+        fontSize: 18,
+        marginVertical: 5,
     },
 });
 
