@@ -28,7 +28,7 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={styles.container}>
       <ImageBackground
-        source={require('../assets/images/background.jpg')}
+        source={require('../cyclists image/cyclists_logo.jpg')}
         style={StyleSheet.absoluteFill}
         resizeMode="cover"
       >
